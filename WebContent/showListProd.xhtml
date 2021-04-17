@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<title>Category</title>
+
+</h:head>
+<h:body>
+ <center><h1 style=" font-family: Verdana, Geneva, sans-serif; color:GoldenRod; margin-top:70px; font-weight:100"><h:outputText value="Products of Category #{ProductBean.getIdCat(param['idCat'])}"/></h1></center>
+    <h:form id="categoryProductForm" style="margin-right:50px; margin-left:50px;"  enctype="multipart/form-data">
+
+		<b:dataTable id="ProdTable" binding="#{table}"
+			value="#{ProductBean.listProducts(param['idCat'])}" var="product"  bootstrapHover="true" bootstrapStriped="false" bootstrapResponsive="true" style="text-align:center;">
+
+
+			<h:column>
+				<f:facet name="header">id</f:facet>
+				<h:outputText value="#{product.getIdProduct()}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Reference</f:facet>
+				<h:outputText value="#{product.getRefProduct()}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{product.getNameProduct()}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Quantity</f:facet>
+				<h:outputText value="#{product.quantity}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Description</f:facet>
+				<h:outputText value="#{product.getDescriptionProd()}" />
+			</h:column>
+		
+
+		</b:dataTable>
+		<center>
+
+			<b:commandButton action="index.xhtml?faces-redirect=true"
+				value="List of categories" styleClass="btn btn-success btnSpace" />
+		</center>
+	</h:form>
+</h:body>
+</html>

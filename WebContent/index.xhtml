@@ -1,0 +1,54 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <title>Category</title>
+   
+</h:head>
+
+<h:body>
+    <center><h1 style=" font-family: Verdana, Geneva, sans-serif; color:GoldenRod; margin-top:70px; font-weight:100"><h:outputText value="Category"/></h1></center>
+    <h:form id="categoryForm" style="margin-right:50px; margin-left:50px;"  enctype="multipart/form-data">
+    
+        <b:dataTable id="categoryData" binding="#{table}" value="#{CategoryBean.listCategory()}" var="category"  bootstrapHover="true" bootstrapStriped="false" bootstrapResponsive="true" style="text-align:center;">
+            
+            <h:column headerText="Spalte 1">
+                <f:facet name="header">Name</f:facet>
+                 <h:commandLink value="#{category.nameCat}" action="#{CategoryBean.redirectProduct(category.idCat)}"/>
+            </h:column>
+            
+             <h:column>
+					<f:facet name="header">Image</f:facet>
+					<p:graphicImage value="#{CategoryBean.getImg()}" width="50"
+						legth="50">
+						<f:param name="idCat" value="#{category.idCat}" />
+					</p:graphicImage>
+				</h:column>
+           
+            <h:column headerText="Spalte 2">
+                <f:facet name="header">Update</f:facet>
+               <h:commandLink value="update" action="#{CategoryBean.redirectUpdate(category.idCat)}"/>
+               
+            </h:column>
+            <h:column headerText="Spalte 3">
+                <f:facet name="header">Delete</f:facet>
+                <h:commandLink value="delete" action="#{CategoryBean.redirectDelete(category.idCat)}"/>
+               
+            </h:column>
+            
+        </b:dataTable>
+        <center>
+        	<h:commandButton action="addCat.xhtml?faces-redirect=true" value="Add category" styleClass="btn btn-success btnSpace" />
+        	<h:commandButton action="product.xhtml?faces-redirect=true" value="List of products" styleClass="btn btn-warning btnSpace" />
+        </center>
+    </h:form>
+
+</h:body>
+</html>

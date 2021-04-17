@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<title>Category</title>
+
+</h:head>
+<h:body>
+	<center>
+		<h1
+			style="font-family: Verdana, Geneva, sans-serif; color: GoldenRod; margin-top: 70px; font-weight: 100">
+			<h:outputText
+				value="Update Category #{CategoryBean.setCategory(param['idCat'])}" />
+		</h1>
+	</center>
+	<h:form id="categoryForm" enctype="multipart/form-data"
+		bootstrapHover="true" bootstrapStriped="false"
+		bootstrapResponsive="true"
+		style="margin-right:50%; margin-left:38%;  ">
+		<div>
+			<h:outputLabel>Name : </h:outputLabel>
+
+				<f:facet name="header">Name</f:facet>
+				<h:inputText value="#{CategoryBean.name_cat}" style="width:260px;margin-top:15px; margin-button:10%" />
+
+			<h:outputLabel style="margin-top:15px;"> Image : </h:outputLabel>
+			<h:inputFile value="#{CategoryBean.image}" style="margin-top:15px;"></h:inputFile>
+
+			<b:commandButton value="update"
+				action="#{CategoryBean.updateCategory(CategoryBean)}" styleClass="btn btn-success btnSpace" style="margin-top:15px; margin-left:75%"></b:commandButton>
+		</div>
+
+	</h:form>
+</h:body>
+</html>
